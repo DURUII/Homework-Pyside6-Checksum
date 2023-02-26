@@ -20,7 +20,7 @@
 
 2. UI
 	- [ ] 项目结构
-		- [ ] 安装 Qt Designer
+		- [ ] 安装 Qt Designer，初步改造（图标、文字、）
 		- [ ] 实现`pack&crate.sh`打包脚本
 
 	- [ ] 布局改造
