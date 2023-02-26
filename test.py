@@ -15,4 +15,6 @@ b1 cd e7 cb 81 e7 a1 ce c4 e0 f7 29 79 22 61
 parser.add_argument('--recursive', default=True, type=bool)
 args = parser.parse_args()
 
-EthernetII.parse_ethernet_ii(args.stream, args.base, args.recursive)
+EthernetII.parse_ethernet_ii("""
+6215a8d007229c297610047308004500004b9a0a000040110000c0a82b21b465f6e6eca21f400037975e023b290125622b7bd18c230200000001010100006a84fd2587843746cad0b4f09e6c2f2949dc976adf7912fe777903
+""", args.base, args.recursive)

@@ -20,11 +20,12 @@
 
 2. UI
 	- [ ] 项目结构
-		- [ ] 安装 Qt Designer，初步改造（图标、文字、）
+		- [ ] 安装 Qt Designer，小打小闹（图标、文字）
 		- [ ] 实现`pack&crate.sh`打包脚本
+		- [ ] 熟悉项目结构，学习如何改造（）
 
-	- [ ] 布局改造
-		- [ ] 
+	- [ ] 本地改造
+		- [ ] 使用已有
 	- [ ] 功能集成
 		- [ ] 
 
@@ -38,5 +39,6 @@
 
 2. pyside6
 	- [Github - Modern_GUI_PyDracula_PySide6_or_PyQt6🌟](https://github.com/Wanderson-Magalhaes/Modern_GUI_PyDracula_PySide6_or_PyQt6)
+	- [Rookie 3.0官方图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.dc64b3430&cid=7077)
 	- [15分钟快速入门PySide/PyQt](https://www.bilibili.com/video/BV18F411W7y2)
 	- [Python+Pyside/PyQt实现的GUI桌面应用](https://www.bilibili.com/video/BV1i24y1X7pV)

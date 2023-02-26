@@ -17,13 +17,14 @@
 import sys
 import os
 import platform
+import webbrowser
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
 from widgets import *
 
-os.environ["QT_FONT_DPI"] = "80"  # FIX Problem for High DPI and Scale above 100%
+os.environ["QT_FONT_DPI"] = "75"  # FIX Problem for High DPI and Scale above 100%
 
 # SET AS GLOBAL WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -66,20 +67,18 @@ class MainWindow(QMainWindow):
 
         # QTableWidget PARAMETERS
         # ///////////////////////////////////////////////////////////////
-        widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         # BUTTONS CLICK
         # ///////////////////////////////////////////////////////////////
 
         # LEFT MENUS
         widgets.btn_home.clicked.connect(self.buttonClick)
-        widgets.btn_widgets.clicked.connect(self.buttonClick)
-        widgets.btn_new.clicked.connect(self.buttonClick)
-        widgets.btn_save.clicked.connect(self.buttonClick)
 
-        # TODO 增加主题切换按钮监听事件
-
-        widgets.btn_message.clicked.connect(self.buttonClick)
+        # TODO 输入 解析 步骤
+        widgets.btn_input.clicked.connect(self.buttonClick)
+        widgets.btn_parse.clicked.connect(self.buttonClick)
+        widgets.btn_process.clicked.connect(self.buttonClick)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -88,11 +87,18 @@ class MainWindow(QMainWindow):
         widgets.toggleLeftBox.clicked.connect(openCloseLeftBox)
         widgets.extraCloseColumnBtn.clicked.connect(openCloseLeftBox)
 
+        widgets.btn_github.clicked.connect(self.buttonClick)
+        widgets.btn_wust.clicked.connect(self.buttonClick)
+        widgets.btn_cnblogs.clicked.connect(self.buttonClick)
+
         # EXTRA RIGHT BOX
         def openCloseRightBox():
             UIFunctions.toggleRightBox(self, True)
 
         widgets.settingsTopBtn.clicked.connect(openCloseRightBox)
+
+        # TODO 主题 导出
+        widgets.btn_theme.clicked.connect(self.buttonClick)
 
         # SHOW APP
         # ///////////////////////////////////////////////////////////////
@@ -117,7 +123,7 @@ class MainWindow(QMainWindow):
 
         # SET HOME PAGE AND SELECT MENU
         # ///////////////////////////////////////////////////////////////
-        widgets.stackedWidget.setCurrentWidget(widgets.home)
+        widgets.stackedWidget.setCurrentWidget(widgets.page_home)
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
     # BUTTONS CLICK
@@ -128,30 +134,42 @@ class MainWindow(QMainWindow):
         btn = self.sender()
         btnName = btn.objectName()
 
+        if btnName == "btn_wust":
+            webbrowser.open("https://www.wust.edu.cn")
+        elif btnName == "btn_cnblogs":
+            webbrowser.open("https://www.cnblogs.com/anrushan/")
+        elif btnName == "btn_github":
+            webbrowser.open("https://github.com/DURUII")
+
         # SHOW HOME PAGE
         if btnName == "btn_home":
-            widgets.stackedWidget.setCurrentWidget(widgets.home)
+            widgets.stackedWidget.setCurrentWidget(widgets.page_home)
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # SHOW WIDGETS PAGE
-        if btnName == "btn_widgets":
-            widgets.stackedWidget.setCurrentWidget(widgets.widgets)
-            UIFunctions.resetStyle(self, btnName)
-            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
+        # TODO 输入 解析 步骤 退出
 
-        # SHOW NEW PAGE
-        if btnName == "btn_new":
-            widgets.stackedWidget.setCurrentWidget(widgets.new_page)  # SET PAGE
+        if btnName == "btn_input":
+            widgets.stackedWidget.setCurrentWidget(widgets.page_input)  # SET PAGE
             UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
+            # QMessageBox.information(self, "警告", "该功能尚未实现", QMessageBox.Yes)
 
-        if btnName == "btn_save":
-            print("Save BTN clicked!")
-            QMessageBox.information(self, "警告", "该功能尚未实现", QMessageBox.Yes)
+        if btnName == "btn_parse":
+            widgets.stackedWidget.setCurrentWidget(widgets.page_parse)  # SET PAGE
+            UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
+            # QMessageBox.information(self, "警告", "该功能尚未实现", QMessageBox.Yes)
 
-        # 主题切换
-        if btnName == "btn_message":
+        if btnName == "btn_process":
+            widgets.stackedWidget.setCurrentWidget(widgets.page_process)  # SET PAGE
+            UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
+            # QMessageBox.information(self, "警告", "该功能尚未实现", QMessageBox.Yes)
+
+        # TODO 主题 导出
+
+        if btnName == "btn_theme":
             if self.useCustomTheme:
                 themeFile = "themes/py_dracula_dark.qss"
                 UIFunctions.theme(self, themeFile, True)
@@ -162,6 +180,9 @@ class MainWindow(QMainWindow):
                 UIFunctions.theme(self, themeFile, True)
                 AppFunctions.setThemeHack(self)
                 self.useCustomTheme = True
+
+        if btnName == "btn_export":
+            QMessageBox.information(self, "警告", "该功能尚未实现", QMessageBox.Yes)
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
