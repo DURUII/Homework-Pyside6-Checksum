@@ -4,6 +4,7 @@ the THIN WAIST's JOB:
 1. deliver packets end-to-end across the Internet, from the SOURCE end to the eventual DESTINATION end.
 2. no promises and no guarantees
 """
+from checksum import dataset, process_dataset
 from checksum.layers.transport import TCP, UDP
 from checksum.utils import parser, decoder, checker
 from checksum.utils.decoder import type_protocol
@@ -42,7 +43,8 @@ class IPv4:
 
     @classmethod
     def checksum_header(cls, stream_bin_reset, stream_checksum):
-        checker.check(nip_prefix(stream_bin_reset)[:160], stream_checksum, base=2)
+        process_dataset['network'] = checker.check(nip_prefix(stream_bin_reset)[:160], stream_checksum, base=2,
+                                                   pseudo=False)
 
     @classmethod
     def parse_ipv4(cls, stream: str, base, recursive=False):
@@ -59,6 +61,8 @@ class IPv4:
                 console.print(f"{key} : [bold red italic]{key2exp[key]}[/bold red italic]")
             else:
                 console.print(f"{key} : [black]{key2exp[key]}[/black]")
+
+        dataset['network'] = key2exp
 
         cls.checksum_header(stream_bin_reset, key2val[String.checksum])
 

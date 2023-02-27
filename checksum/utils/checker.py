@@ -1,3 +1,4 @@
+from checksum import Data
 from checksum.utils.rich_console import console
 from checksum.utils.formatter import nip_prefix, print_hex, bin2hex
 
@@ -20,29 +21,42 @@ def double_sum(stream_hex: str):
     return l + r
 
 
-def check(stream_hex: str, stream_checksum: str, base=16):
+def check(stream_hex: str, stream_checksum: str, base=16, pseudo=True):
     if base == 2:
         stream_hex = bin2hex(stream_hex)
 
     stream_hex, stream_checksum = map(nip_prefix, (stream_hex, stream_checksum))
 
-    print_hex(stream_hex)
+    process = {Data.pseudo: pseudo,
+               Data.reset: print_hex(stream_hex),
+               Data.detail: [],
+               Data.double_sum: [],
+               Data.complement: [],
+               Data.result: False}
 
     _sum = 0
-
+    _tmp = 0
     for i in range(4, len(stream_hex) + 1, 4):
-        _sum += int(stream_hex[i - 4:i], 16)
+        _tmp += int(stream_hex[i - 4:i], 16)
+        process[Data.detail].append(
+            f"{hex(_sum).rjust(10, ' ')} + {(hex(int(stream_hex[i - 4:i], 16))).rjust(10, ' ')} = {hex(_tmp).rjust(10, ' ')}")
+        _sum = _tmp
         # console.print(f"{stream_hex[i - 4:i]}+={hex(_sum)}")
 
     while len(hex(_sum)) > 6:
         _sum = double_sum(hex(_sum))
-        console.print(f"double_sum: {hex(_sum)}")
+        process[Data.double_sum].append(f"{hex(_sum)}")
+        # console.print(f"double_sum: {hex(_sum)}")
 
     console.print(f"complement: {complement(hex(_sum))}")
+    process[Data.complement].append(
+        f"{hex(_sum)} + {hex(int(stream_checksum, 16))} = {hex(_sum + int(stream_checksum, 16))}")
+
     valid = int(complement(hex(_sum)), 16) == int(stream_checksum, 16)
     console.print("[purple bold]checksum_valid?: [/purple bold]" + f"[bold red]{str(valid)}[/bold red]")
 
-    return valid
+    process[Data.result] = valid
+    return process
 
 
 if __name__ == '__main__':

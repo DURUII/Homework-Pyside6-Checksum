@@ -1769,6 +1769,15 @@ p, li { white-space: pre-wrap; }
                 </property>
                 <item>
                  <widget class="QFrame" name="pagesContainer">
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>10</pointsize>
+                    <weight>50</weight>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
                   <property name="styleSheet">
                    <string notr="true"/>
                   </property>
@@ -1800,7 +1809,7 @@ p, li { white-space: pre-wrap; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>3</number>
                      </property>
                      <widget class="QWidget" name="page_home">
                       <property name="styleSheet">
@@ -1941,7 +1950,7 @@ background-repeat: no-repeat;</string>
                                    <number>0</number>
                                   </property>
                                   <item row="0" column="0">
-                                   <widget class="QLineEdit" name="lineEdit">
+                                   <widget class="QLineEdit" name="text_file">
                                     <property name="minimumSize">
                                      <size>
                                       <width>0</width>
@@ -1949,7 +1958,7 @@ background-repeat: no-repeat;</string>
                                      </size>
                                     </property>
                                     <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(33, 37, 43);</string>
+                                     <string notr="true">background-color: #6272a4;</string>
                                     </property>
                                     <property name="text">
                                      <string/>
@@ -1960,7 +1969,7 @@ background-repeat: no-repeat;</string>
                                    </widget>
                                   </item>
                                   <item row="0" column="1">
-                                   <widget class="QPushButton" name="pushButton">
+                                   <widget class="QPushButton" name="btn_file">
                                     <property name="minimumSize">
                                      <size>
                                       <width>150</width>
@@ -1980,7 +1989,7 @@ background-repeat: no-repeat;</string>
                                      <cursorShape>PointingHandCursor</cursorShape>
                                     </property>
                                     <property name="styleSheet">
-                                     <string notr="true">background-color: rgb(52, 59, 72);</string>
+                                     <string notr="true">background-color: #6272a4;</string>
                                     </property>
                                     <property name="text">
                                      <string>选择</string>
@@ -2057,7 +2066,7 @@ background-repeat: no-repeat;</string>
                             <item>
                              <layout class="QHBoxLayout" name="horizontalLayout_8">
                               <item>
-                               <widget class="QPlainTextEdit" name="plainTextEdit">
+                               <widget class="QPlainTextEdit" name="text_stream">
                                 <property name="minimumSize">
                                  <size>
                                   <width>200</width>
@@ -2074,14 +2083,45 @@ background-repeat: no-repeat;</string>
                                  <string/>
                                 </property>
                                 <property name="styleSheet">
-                                 <string notr="true">background-color: rgb(33, 37, 43);</string>
+                                 <string notr="true">background-color: #6272a4;</string>
                                 </property>
                                </widget>
                               </item>
                               <item>
                                <layout class="QVBoxLayout" name="verticalLayout_19">
                                 <item>
+                                 <spacer name="verticalSpacer_3">
+                                  <property name="orientation">
+                                   <enum>Qt::Vertical</enum>
+                                  </property>
+                                  <property name="sizeType">
+                                   <enum>QSizePolicy::Minimum</enum>
+                                  </property>
+                                  <property name="sizeHint" stdset="0">
+                                   <size>
+                                    <width>20</width>
+                                    <height>10</height>
+                                   </size>
+                                  </property>
+                                 </spacer>
+                                </item>
+                                <item>
                                  <widget class="QCheckBox" name="checkBox">
+                                  <property name="sizePolicy">
+                                   <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                   </sizepolicy>
+                                  </property>
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>150</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
+                                  <property name="cursor">
+                                   <cursorShape>WhatsThisCursor</cursorShape>
+                                  </property>
                                   <property name="autoFillBackground">
                                    <bool>false</bool>
                                   </property>
@@ -2089,12 +2129,34 @@ background-repeat: no-repeat;</string>
                                    <string notr="true"/>
                                   </property>
                                   <property name="text">
-                                   <string>CheckBox</string>
+                                   <string>二进制流输入</string>
                                   </property>
                                  </widget>
                                 </item>
                                 <item>
+                                 <spacer name="verticalSpacer">
+                                  <property name="orientation">
+                                   <enum>Qt::Vertical</enum>
+                                  </property>
+                                  <property name="sizeType">
+                                   <enum>QSizePolicy::Minimum</enum>
+                                  </property>
+                                  <property name="sizeHint" stdset="0">
+                                   <size>
+                                    <width>20</width>
+                                    <height>10</height>
+                                   </size>
+                                  </property>
+                                 </spacer>
+                                </item>
+                                <item>
                                  <widget class="QComboBox" name="comboBox">
+                                  <property name="minimumSize">
+                                   <size>
+                                    <width>150</width>
+                                    <height>30</height>
+                                   </size>
+                                  </property>
                                   <property name="font">
                                    <font>
                                     <family>Segoe UI</family>
@@ -2104,11 +2166,20 @@ background-repeat: no-repeat;</string>
                                     <bold>false</bold>
                                    </font>
                                   </property>
+                                  <property name="cursor">
+                                   <cursorShape>WhatsThisCursor</cursorShape>
+                                  </property>
                                   <property name="autoFillBackground">
                                    <bool>false</bool>
                                   </property>
                                   <property name="styleSheet">
                                    <string notr="true">background-color: rgb(33, 37, 43);</string>
+                                  </property>
+                                  <property name="currentText">
+                                   <string>Test 1</string>
+                                  </property>
+                                  <property name="maxVisibleItems">
+                                   <number>3</number>
                                   </property>
                                   <property name="iconSize">
                                    <size>
@@ -2137,7 +2208,29 @@ background-repeat: no-repeat;</string>
                                  </widget>
                                 </item>
                                 <item>
-                                 <widget class="QPushButton" name="pushButton_2">
+                                 <spacer name="verticalSpacer_2">
+                                  <property name="orientation">
+                                   <enum>Qt::Vertical</enum>
+                                  </property>
+                                  <property name="sizeType">
+                                   <enum>QSizePolicy::Minimum</enum>
+                                  </property>
+                                  <property name="sizeHint" stdset="0">
+                                   <size>
+                                    <width>20</width>
+                                    <height>10</height>
+                                   </size>
+                                  </property>
+                                 </spacer>
+                                </item>
+                                <item>
+                                 <widget class="QPushButton" name="btn_proceed">
+                                  <property name="sizePolicy">
+                                   <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                   </sizepolicy>
+                                  </property>
                                   <property name="minimumSize">
                                    <size>
                                     <width>150</width>
@@ -2157,14 +2250,20 @@ background-repeat: no-repeat;</string>
                                    <cursorShape>PointingHandCursor</cursorShape>
                                   </property>
                                   <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(52, 59, 72); color: #ff79c6;</string>
+                                   <string notr="true">background-color: #6272a4; color: #ff79c6;</string>
                                   </property>
                                   <property name="text">
-                                   <string>选择</string>
+                                   <string/>
                                   </property>
                                   <property name="icon">
                                    <iconset resource="resources.qrc">
-                                    <normaloff>:/iconfont/images/iconfont/files.png</normaloff>:/iconfont/images/iconfont/files.png</iconset>
+                                    <normaloff>:/iconfont/images/iconfont/compute.png</normaloff>:/iconfont/images/iconfont/compute.png</iconset>
+                                  </property>
+                                  <property name="iconSize">
+                                   <size>
+                                    <width>32</width>
+                                    <height>32</height>
+                                   </size>
                                   </property>
                                  </widget>
                                 </item>
@@ -2196,21 +2295,50 @@ background-repeat: no-repeat;</string>
                       </layout>
                      </widget>
                      <widget class="QWidget" name="page_parse">
-                      <layout class="QVBoxLayout" name="verticalLayout_21">
+                      <layout class="QVBoxLayout" name="verticalLayout_27">
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_6">
                          <item>
-                          <layout class="QVBoxLayout" name="verticalLayout_20">
+                          <layout class="QVBoxLayout" name="verticalLayout_26">
                            <item>
-                            <widget class="QTextEdit" name="textEdit_ethernet">
-                             <property name="html">
-                              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                            <layout class="QVBoxLayout" name="verticalLayout_21">
+                             <item>
+                              <widget class="QLabel" name="label_2">
+                               <property name="text">
+                                <string>链路层（Ethernet II）</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QTextEdit" name="text_link">
+                               <property name="sizePolicy">
+                                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                                 <horstretch>0</horstretch>
+                                 <verstretch>0</verstretch>
+                                </sizepolicy>
+                               </property>
+                               <property name="minimumSize">
+                                <size>
+                                 <width>0</width>
+                                 <height>0</height>
+                                </size>
+                               </property>
+                               <property name="documentTitle">
+                                <string/>
+                               </property>
+                               <property name="readOnly">
+                                <bool>true</bool>
+                               </property>
+                               <property name="html">
+                                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ethernet&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                             </property>
-                            </widget>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
                            </item>
                            <item>
                             <widget class="Line" name="line_2">
@@ -2226,16 +2354,30 @@ p, li { white-space: pre-wrap; }
                             </widget>
                            </item>
                            <item>
-                            <widget class="QTextEdit" name="textEdit_ip">
-                             <property name="html">
-                              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                            <layout class="QVBoxLayout" name="verticalLayout_23">
+                             <item>
+                              <widget class="QLabel" name="label">
+                               <property name="text">
+                                <string>传输层（TCP/UDP）</string>
+                               </property>
+                              </widget>
+                             </item>
+                             <item>
+                              <widget class="QTextEdit" name="text_transport">
+                               <property name="readOnly">
+                                <bool>true</bool>
+                               </property>
+                               <property name="html">
+                                <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ip&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;tcp/udp&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                             </property>
-                            </widget>
+                               </property>
+                              </widget>
+                             </item>
+                            </layout>
                            </item>
                           </layout>
                          </item>
@@ -2253,34 +2395,62 @@ p, li { white-space: pre-wrap; }
                           </widget>
                          </item>
                          <item>
-                          <widget class="QTextEdit" name="textEdit_tcpudp">
-                           <property name="html">
-                            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                          <layout class="QVBoxLayout" name="verticalLayout_20">
+                           <item>
+                            <widget class="QLabel" name="label_3">
+                             <property name="text">
+                              <string>网络层（IPv4）</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QTextEdit" name="text_network">
+                             <property name="readOnly">
+                              <bool>true</bool>
+                             </property>
+                             <property name="html">
+                              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;tcp/udp&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                           </property>
-                          </widget>
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ip&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
                          </item>
                         </layout>
                        </item>
                       </layout>
                      </widget>
                      <widget class="QWidget" name="page_process">
-                      <layout class="QVBoxLayout" name="verticalLayout_22">
+                      <layout class="QVBoxLayout" name="verticalLayout_29">
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_7">
                          <item>
-                          <widget class="QTextEdit" name="textEdit_process_ip">
-                           <property name="html">
-                            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                          <layout class="QVBoxLayout" name="verticalLayout_22">
+                           <item>
+                            <widget class="QLabel" name="label_4">
+                             <property name="text">
+                              <string>网络层校验和详细过程（IPv4）</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QTextEdit" name="process_network">
+                             <property name="readOnly">
+                              <bool>true</bool>
+                             </property>
+                             <property name="html">
+                              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ip-process&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                           </property>
-                          </widget>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
                          </item>
                          <item>
                           <widget class="Line" name="line">
@@ -2296,16 +2466,30 @@ p, li { white-space: pre-wrap; }
                           </widget>
                          </item>
                          <item>
-                          <widget class="QTextEdit" name="textEdit_process_tcpudp">
-                           <property name="html">
-                            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+                          <layout class="QVBoxLayout" name="verticalLayout_28">
+                           <item>
+                            <widget class="QLabel" name="label_5">
+                             <property name="text">
+                              <string>传输层校验和详细过程（TCP/UDP）</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QTextEdit" name="process_transport">
+                             <property name="readOnly">
+                              <bool>true</bool>
+                             </property>
+                             <property name="html">
+                              <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;tcp/udp process&lt;/p&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                           </property>
-                          </widget>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
                          </item>
                         </layout>
                        </item>

@@ -42,3 +42,4 @@
 	- [Rookie 3.0官方图标库](https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.dc64b3430&cid=7077)
 	- [15分钟快速入门PySide/PyQt](https://www.bilibili.com/video/BV18F411W7y2)
 	- [Python+Pyside/PyQt实现的GUI桌面应用](https://www.bilibili.com/video/BV1i24y1X7pV)
+	- [实现选择文件界面](https://blog.csdn.net/weixin_42888638/article/details/127186631)

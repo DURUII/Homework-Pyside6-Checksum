@@ -19,6 +19,9 @@ import os
 import platform
 import webbrowser
 
+from checksum import dataset, process_dataset, process_html, parse_html
+from checksum.layers.link import EthernetII
+from checksum.layers.network import IPv4
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
 from modules import *
@@ -77,7 +80,14 @@ class MainWindow(QMainWindow):
 
         # TODO 输入 解析 步骤
         widgets.btn_input.clicked.connect(self.buttonClick)
+        widgets.btn_file.clicked.connect(self.buttonClick)
+        widgets.btn_proceed.clicked.connect(self.buttonClick)
+        widgets.comboBox.clear()
+        widgets.comboBox.addItem("Ethernet II")
+        widgets.comboBox.addItem("IPv4")
+
         widgets.btn_parse.clicked.connect(self.buttonClick)
+
         widgets.btn_process.clicked.connect(self.buttonClick)
 
         # EXTRA LEFT BOX
@@ -134,11 +144,12 @@ class MainWindow(QMainWindow):
         btn = self.sender()
         btnName = btn.objectName()
 
+        # 扩展信息栏
         if btnName == "btn_wust":
             webbrowser.open("https://www.wust.edu.cn")
-        elif btnName == "btn_cnblogs":
+        if btnName == "btn_cnblogs":
             webbrowser.open("https://www.cnblogs.com/anrushan/")
-        elif btnName == "btn_github":
+        if btnName == "btn_github":
             webbrowser.open("https://github.com/DURUII")
 
         # SHOW HOME PAGE
@@ -147,7 +158,7 @@ class MainWindow(QMainWindow):
             UIFunctions.resetStyle(self, btnName)
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
-        # TODO 输入 解析 步骤 退出
+        # TODO 输入 解析 步骤
 
         if btnName == "btn_input":
             widgets.stackedWidget.setCurrentWidget(widgets.page_input)  # SET PAGE
@@ -155,17 +166,57 @@ class MainWindow(QMainWindow):
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
             # QMessageBox.information(self, "警告", "该功能尚未实现", QMessageBox.Yes)
 
+        if btnName == "btn_file":
+            filename = QFileDialog.getOpenFileNames(self, '输入', os.getcwd(), "All Files(*);;Text Files(*.txt)")
+            # 输出文件，查看文件路径
+            print(filename)
+            # 根据输出结果选取对应的文件名
+            self.filename = filename[0][0]
+            widgets.text_file.setText(filename[0][0])
+
+            with open(self.filename, 'r') as fin:
+                widgets.text_stream.clear()
+                widgets.text_stream.appendPlainText(fin.read())
+
+        if btnName == 'btn_proceed':
+            try:
+                stream = widgets.text_stream.toPlainText()
+
+                if stream is None or len(stream) == 0:
+                    QMessageBox.information(self, "警告", "输入为空，请继续输入", QMessageBox.Yes)
+                else:
+                    base = 2 if widgets.checkBox.isChecked() else 16
+                    index = widgets.comboBox.currentIndex()
+                    if index == 1:
+                        IPv4.parse_ipv4(stream, base, True)
+                    else:
+                        EthernetII.parse_ethernet_ii(stream, base, True)
+
+                    QMessageBox.information(self, "成功", "点击查看解析结果", QMessageBox.Yes)
+                    widgets.btn_parse.click()
+
+            except Exception as e:
+                QMessageBox.information(self, "异常", str(e.args), QMessageBox.Yes)
+
         if btnName == "btn_parse":
             widgets.stackedWidget.setCurrentWidget(widgets.page_parse)  # SET PAGE
             UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
-            # QMessageBox.information(self, "警告", "该功能尚未实现", QMessageBox.Yes)
+
+            link, network, transport = parse_html(dataset)
+
+            widgets.text_link.setHtml(link)
+            widgets.text_network.setHtml(network)
+            widgets.text_transport.setHtml(transport)
 
         if btnName == "btn_process":
             widgets.stackedWidget.setCurrentWidget(widgets.page_process)  # SET PAGE
             UIFunctions.resetStyle(self, btnName)  # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))  # SELECT MENU
-            # QMessageBox.information(self, "警告", "该功能尚未实现", QMessageBox.Yes)
+
+            network, transport = process_html(process_dataset)
+            widgets.process_network.setHtml(network)
+            widgets.process_transport.setHtml(transport)
 
         # TODO 主题 导出
 

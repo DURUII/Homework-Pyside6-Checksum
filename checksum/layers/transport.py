@@ -4,6 +4,7 @@ TCP's JOB:
 
 correctly delivered, with any lost/corrupted bank automatically retransmitted if needed
 """
+from checksum import dataset, process_dataset
 from checksum.layers.application import APP
 from checksum.utils.rich_console import console
 from checksum.utils import parser, decoder, checker
@@ -32,7 +33,7 @@ class TCP:
 
     @classmethod
     def checksum(cls, stream_bin_reset, stream_checksum):
-        checker.check(stream_bin_reset, stream_checksum, base=2)
+        process_dataset['transport'] = checker.check(stream_bin_reset, stream_checksum, base=2)
 
     @classmethod
     def parse_tcp(cls, stream: str, base, recursive=False, **args):
@@ -48,6 +49,8 @@ class TCP:
                 console.print(f"{key} : [bold red italic]{key2exp[key]}[/bold red italic]")
             else:
                 console.print(f"{key} : [black]{key2exp[key]}[/black]")
+
+        dataset['transport'] = key2exp
 
         data = stream_bin_reset[160:]
 
@@ -84,7 +87,7 @@ class UDP:
 
     @classmethod
     def checksum(cls, stream_bin_reset, stream_checksum):
-        checker.check(stream_bin_reset, stream_checksum, base=2)
+        process_dataset['transport'] = checker.check(stream_bin_reset, stream_checksum, base=2)
 
     @classmethod
     def parse_udp(cls, stream: str, base, recursive=False, **args):
@@ -100,6 +103,8 @@ class UDP:
                 console.print(f"{key} : [bold red italic]{key2exp[key]}[/bold red italic]")
             else:
                 console.print(f"{key} : [black]{key2exp[key]}[/black]")
+
+        dataset['transport'] = key2exp
 
         data = stream_bin_reset[64:]
 

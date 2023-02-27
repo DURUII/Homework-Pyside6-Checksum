@@ -18,7 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QFrame,
     QGridLayout, QHBoxLayout, QLabel, QLineEdit,
     QMainWindow, QPlainTextEdit, QPushButton, QSizePolicy,
-    QStackedWidget, QTextEdit, QVBoxLayout, QWidget)
+    QSpacerItem, QStackedWidget, QTextEdit, QVBoxLayout,
+    QWidget)
 from . resources_rc import *
 
 class Ui_MainWindow(object):
@@ -1003,6 +1004,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.pagesContainer = QFrame(self.content)
         self.pagesContainer.setObjectName(u"pagesContainer")
+        self.pagesContainer.setFont(font)
         self.pagesContainer.setStyleSheet(u"")
         self.pagesContainer.setFrameShape(QFrame.NoFrame)
         self.pagesContainer.setFrameShadow(QFrame.Raised)
@@ -1070,24 +1072,24 @@ class Ui_MainWindow(object):
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(-1, -1, -1, 0)
-        self.lineEdit = QLineEdit(self.frame_content_wid_1)
-        self.lineEdit.setObjectName(u"lineEdit")
-        self.lineEdit.setMinimumSize(QSize(0, 30))
-        self.lineEdit.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.text_file = QLineEdit(self.frame_content_wid_1)
+        self.text_file.setObjectName(u"text_file")
+        self.text_file.setMinimumSize(QSize(0, 30))
+        self.text_file.setStyleSheet(u"background-color: #6272a4;")
 
-        self.gridLayout.addWidget(self.lineEdit, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.text_file, 0, 0, 1, 1)
 
-        self.pushButton = QPushButton(self.frame_content_wid_1)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setMinimumSize(QSize(150, 30))
-        self.pushButton.setFont(font)
-        self.pushButton.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.btn_file = QPushButton(self.frame_content_wid_1)
+        self.btn_file.setObjectName(u"btn_file")
+        self.btn_file.setMinimumSize(QSize(150, 30))
+        self.btn_file.setFont(font)
+        self.btn_file.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_file.setStyleSheet(u"background-color: #6272a4;")
         icon4 = QIcon()
         icon4.addFile(u":/iconfont/images/iconfont/files.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton.setIcon(icon4)
+        self.btn_file.setIcon(icon4)
 
-        self.gridLayout.addWidget(self.pushButton, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.btn_file, 0, 1, 1, 1)
 
         self.labelVersion_3 = QLabel(self.frame_content_wid_1)
         self.labelVersion_3.setObjectName(u"labelVersion_3")
@@ -1127,46 +1129,76 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8 = QHBoxLayout()
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
-        self.plainTextEdit = QPlainTextEdit(self.row_2)
-        self.plainTextEdit.setObjectName(u"plainTextEdit")
-        self.plainTextEdit.setMinimumSize(QSize(200, 200))
-        self.plainTextEdit.viewport().setProperty("cursor", QCursor(Qt.IBeamCursor))
-        self.plainTextEdit.setMouseTracking(True)
-        self.plainTextEdit.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.text_stream = QPlainTextEdit(self.row_2)
+        self.text_stream.setObjectName(u"text_stream")
+        self.text_stream.setMinimumSize(QSize(200, 200))
+        self.text_stream.viewport().setProperty("cursor", QCursor(Qt.IBeamCursor))
+        self.text_stream.setMouseTracking(True)
+        self.text_stream.setStyleSheet(u"background-color: #6272a4;")
 
-        self.horizontalLayout_8.addWidget(self.plainTextEdit)
+        self.horizontalLayout_8.addWidget(self.text_stream)
 
         self.verticalLayout_19 = QVBoxLayout()
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.verticalSpacer_3 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Minimum)
+
+        self.verticalLayout_19.addItem(self.verticalSpacer_3)
+
         self.checkBox = QCheckBox(self.row_2)
         self.checkBox.setObjectName(u"checkBox")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.checkBox.sizePolicy().hasHeightForWidth())
+        self.checkBox.setSizePolicy(sizePolicy3)
+        self.checkBox.setMinimumSize(QSize(150, 30))
+        self.checkBox.setCursor(QCursor(Qt.WhatsThisCursor))
         self.checkBox.setAutoFillBackground(False)
         self.checkBox.setStyleSheet(u"")
 
         self.verticalLayout_19.addWidget(self.checkBox)
+
+        self.verticalSpacer = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Minimum)
+
+        self.verticalLayout_19.addItem(self.verticalSpacer)
 
         self.comboBox = QComboBox(self.row_2)
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
         self.comboBox.setObjectName(u"comboBox")
+        self.comboBox.setMinimumSize(QSize(150, 30))
         self.comboBox.setFont(font)
+        self.comboBox.setCursor(QCursor(Qt.WhatsThisCursor))
         self.comboBox.setAutoFillBackground(False)
         self.comboBox.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+        self.comboBox.setMaxVisibleItems(3)
         self.comboBox.setIconSize(QSize(16, 16))
         self.comboBox.setFrame(True)
 
         self.verticalLayout_19.addWidget(self.comboBox)
 
-        self.pushButton_2 = QPushButton(self.row_2)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMinimumSize(QSize(150, 30))
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_2.setStyleSheet(u"background-color: rgb(52, 59, 72); color: #ff79c6;")
-        self.pushButton_2.setIcon(icon4)
+        self.verticalSpacer_2 = QSpacerItem(20, 10, QSizePolicy.Minimum, QSizePolicy.Minimum)
 
-        self.verticalLayout_19.addWidget(self.pushButton_2)
+        self.verticalLayout_19.addItem(self.verticalSpacer_2)
+
+        self.btn_proceed = QPushButton(self.row_2)
+        self.btn_proceed.setObjectName(u"btn_proceed")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.MinimumExpanding)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.btn_proceed.sizePolicy().hasHeightForWidth())
+        self.btn_proceed.setSizePolicy(sizePolicy4)
+        self.btn_proceed.setMinimumSize(QSize(150, 30))
+        self.btn_proceed.setFont(font)
+        self.btn_proceed.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_proceed.setStyleSheet(u"background-color: #6272a4; color: #ff79c6;")
+        icon5 = QIcon()
+        icon5.addFile(u":/iconfont/images/iconfont/compute.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_proceed.setIcon(icon5)
+        self.btn_proceed.setIconSize(QSize(32, 32))
+
+        self.verticalLayout_19.addWidget(self.btn_proceed)
 
 
         self.horizontalLayout_8.addLayout(self.verticalLayout_19)
@@ -1191,16 +1223,33 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.page_input)
         self.page_parse = QWidget()
         self.page_parse.setObjectName(u"page_parse")
-        self.verticalLayout_21 = QVBoxLayout(self.page_parse)
-        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.verticalLayout_27 = QVBoxLayout(self.page_parse)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
         self.horizontalLayout_6 = QHBoxLayout()
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
-        self.verticalLayout_20 = QVBoxLayout()
-        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.textEdit_ethernet = QTextEdit(self.page_parse)
-        self.textEdit_ethernet.setObjectName(u"textEdit_ethernet")
+        self.verticalLayout_26 = QVBoxLayout()
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.verticalLayout_21 = QVBoxLayout()
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.label_2 = QLabel(self.page_parse)
+        self.label_2.setObjectName(u"label_2")
 
-        self.verticalLayout_20.addWidget(self.textEdit_ethernet)
+        self.verticalLayout_21.addWidget(self.label_2)
+
+        self.text_link = QTextEdit(self.page_parse)
+        self.text_link.setObjectName(u"text_link")
+        sizePolicy5 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.text_link.sizePolicy().hasHeightForWidth())
+        self.text_link.setSizePolicy(sizePolicy5)
+        self.text_link.setMinimumSize(QSize(0, 0))
+        self.text_link.setReadOnly(True)
+
+        self.verticalLayout_21.addWidget(self.text_link)
+
+
+        self.verticalLayout_26.addLayout(self.verticalLayout_21)
 
         self.line_2 = QFrame(self.page_parse)
         self.line_2.setObjectName(u"line_2")
@@ -1208,15 +1257,26 @@ class Ui_MainWindow(object):
         self.line_2.setFrameShadow(QFrame.Plain)
         self.line_2.setFrameShape(QFrame.HLine)
 
-        self.verticalLayout_20.addWidget(self.line_2)
+        self.verticalLayout_26.addWidget(self.line_2)
 
-        self.textEdit_ip = QTextEdit(self.page_parse)
-        self.textEdit_ip.setObjectName(u"textEdit_ip")
+        self.verticalLayout_23 = QVBoxLayout()
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.label = QLabel(self.page_parse)
+        self.label.setObjectName(u"label")
 
-        self.verticalLayout_20.addWidget(self.textEdit_ip)
+        self.verticalLayout_23.addWidget(self.label)
+
+        self.text_transport = QTextEdit(self.page_parse)
+        self.text_transport.setObjectName(u"text_transport")
+        self.text_transport.setReadOnly(True)
+
+        self.verticalLayout_23.addWidget(self.text_transport)
 
 
-        self.horizontalLayout_6.addLayout(self.verticalLayout_20)
+        self.verticalLayout_26.addLayout(self.verticalLayout_23)
+
+
+        self.horizontalLayout_6.addLayout(self.verticalLayout_26)
 
         self.line_3 = QFrame(self.page_parse)
         self.line_3.setObjectName(u"line_3")
@@ -1226,25 +1286,47 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.line_3)
 
-        self.textEdit_tcpudp = QTextEdit(self.page_parse)
-        self.textEdit_tcpudp.setObjectName(u"textEdit_tcpudp")
+        self.verticalLayout_20 = QVBoxLayout()
+        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
+        self.label_3 = QLabel(self.page_parse)
+        self.label_3.setObjectName(u"label_3")
 
-        self.horizontalLayout_6.addWidget(self.textEdit_tcpudp)
+        self.verticalLayout_20.addWidget(self.label_3)
+
+        self.text_network = QTextEdit(self.page_parse)
+        self.text_network.setObjectName(u"text_network")
+        self.text_network.setReadOnly(True)
+
+        self.verticalLayout_20.addWidget(self.text_network)
 
 
-        self.verticalLayout_21.addLayout(self.horizontalLayout_6)
+        self.horizontalLayout_6.addLayout(self.verticalLayout_20)
+
+
+        self.verticalLayout_27.addLayout(self.horizontalLayout_6)
 
         self.stackedWidget.addWidget(self.page_parse)
         self.page_process = QWidget()
         self.page_process.setObjectName(u"page_process")
-        self.verticalLayout_22 = QVBoxLayout(self.page_process)
-        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.verticalLayout_29 = QVBoxLayout(self.page_process)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
         self.horizontalLayout_7 = QHBoxLayout()
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.textEdit_process_ip = QTextEdit(self.page_process)
-        self.textEdit_process_ip.setObjectName(u"textEdit_process_ip")
+        self.verticalLayout_22 = QVBoxLayout()
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.label_4 = QLabel(self.page_process)
+        self.label_4.setObjectName(u"label_4")
 
-        self.horizontalLayout_7.addWidget(self.textEdit_process_ip)
+        self.verticalLayout_22.addWidget(self.label_4)
+
+        self.process_network = QTextEdit(self.page_process)
+        self.process_network.setObjectName(u"process_network")
+        self.process_network.setReadOnly(True)
+
+        self.verticalLayout_22.addWidget(self.process_network)
+
+
+        self.horizontalLayout_7.addLayout(self.verticalLayout_22)
 
         self.line = QFrame(self.page_process)
         self.line.setObjectName(u"line")
@@ -1254,13 +1336,24 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_7.addWidget(self.line)
 
-        self.textEdit_process_tcpudp = QTextEdit(self.page_process)
-        self.textEdit_process_tcpudp.setObjectName(u"textEdit_process_tcpudp")
+        self.verticalLayout_28 = QVBoxLayout()
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.label_5 = QLabel(self.page_process)
+        self.label_5.setObjectName(u"label_5")
 
-        self.horizontalLayout_7.addWidget(self.textEdit_process_tcpudp)
+        self.verticalLayout_28.addWidget(self.label_5)
+
+        self.process_transport = QTextEdit(self.page_process)
+        self.process_transport.setObjectName(u"process_transport")
+        self.process_transport.setReadOnly(True)
+
+        self.verticalLayout_28.addWidget(self.process_transport)
 
 
-        self.verticalLayout_22.addLayout(self.horizontalLayout_7)
+        self.horizontalLayout_7.addLayout(self.verticalLayout_28)
+
+
+        self.verticalLayout_29.addLayout(self.horizontalLayout_7)
 
         self.stackedWidget.addWidget(self.page_process)
 
@@ -1392,7 +1485,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1448,43 +1541,50 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.closeAppBtn.setText("")
         self.labelBoxBlenderInstalation.setText(QCoreApplication.translate("MainWindow", u"\u4ee5\u6587\u4ef6\u8f93\u5165\uff1a", None))
-        self.lineEdit.setText("")
-        self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u8def\u5f84", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9", None))
+        self.text_file.setText("")
+        self.text_file.setPlaceholderText(QCoreApplication.translate("MainWindow", u"\u6587\u4ef6\u8def\u5f84", None))
+        self.btn_file.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9", None))
         self.labelVersion_3.setText(QCoreApplication.translate("MainWindow", u"\u6ce8\u610f\uff1a\u8bf7\u4fdd\u8bc1\u6570\u636e\u6d41\u7684\u5b8c\u6574\u6027", None))
         self.labelBoxBlenderInstalation_2.setText(QCoreApplication.translate("MainWindow", u"\u4ee5\u5b57\u7b26\u8f93\u5165\uff1a", None))
 #if QT_CONFIG(accessibility)
-        self.plainTextEdit.setAccessibleDescription("")
+        self.text_stream.setAccessibleDescription("")
 #endif // QT_CONFIG(accessibility)
-        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"CheckBox", None))
+        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"\u4e8c\u8fdb\u5236\u6d41\u8f93\u5165", None))
         self.comboBox.setItemText(0, QCoreApplication.translate("MainWindow", u"Test 1", None))
         self.comboBox.setItemText(1, QCoreApplication.translate("MainWindow", u"Test 2", None))
         self.comboBox.setItemText(2, QCoreApplication.translate("MainWindow", u"Test 3", None))
 
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u9009\u62e9", None))
+        self.comboBox.setCurrentText(QCoreApplication.translate("MainWindow", u"Test 1", None))
+        self.btn_proceed.setText("")
         self.labelVersion_4.setText(QCoreApplication.translate("MainWindow", u"\u6ce8\u610f\uff1a\u8bf7\u4fdd\u8bc1\u6570\u636e\u6d41\u7684\u5b8c\u6574\u6027", None))
-        self.textEdit_ethernet.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u94fe\u8def\u5c42\uff08Ethernet II\uff09", None))
+        self.text_link.setDocumentTitle("")
+        self.text_link.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">ethernet</p></body></html>", None))
-        self.textEdit_ip.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.label.setText(QCoreApplication.translate("MainWindow", u"\u4f20\u8f93\u5c42\uff08TCP/UDP\uff09", None))
+        self.text_transport.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">ip</p>\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">tcp/udp</p>\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
-        self.textEdit_tcpudp.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u7f51\u7edc\u5c42\uff08IPv4\uff09", None))
+        self.text_network.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">tcp/udp</p></body></html>", None))
-        self.textEdit_process_ip.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">ip</p></body></html>", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u7f51\u7edc\u5c42\u6821\u9a8c\u548c\u8be6\u7ec6\u8fc7\u7a0b\uff08IPv4\uff09", None))
+        self.process_network.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">ip-process</p></body></html>", None))
-        self.textEdit_process_tcpudp.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u4f20\u8f93\u5c42\u6821\u9a8c\u548c\u8be6\u7ec6\u8fc7\u7a0b\uff08TCP/UDP\uff09", None))
+        self.process_transport.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"

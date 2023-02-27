@@ -5,6 +5,7 @@
     <file>images/images/PyDracula_vertical.png</file>
   </qresource>
   <qresource prefix="iconfont">
+    <file>images/iconfont/compute.png</file>
     <file>images/iconfont/files.png</file>
     <file>images/iconfont/home.png</file>
     <file>images/iconfont/menu.png</file>

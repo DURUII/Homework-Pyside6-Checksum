@@ -9,6 +9,7 @@ from checksum.utils import parser, decoder
 from checksum.utils.rich_console import console
 from checksum.utils.decoder import type_ethernet
 from checksum.utils.static import String
+from checksum import dataset
 
 
 class EthernetII:
@@ -39,14 +40,16 @@ class EthernetII:
             else:
                 console.print(f"{key} : [black]{key2exp[key]}[/black]")
 
+        dataset['link'] = key2exp
+
         if key2val[String.data_payload] is None:
             recursive = False
 
         if recursive:
             if key2exp[String.type_ethernet_ii] == String.ipv4:
                 IPv4.parse_ipv4(key2val[String.data_payload], 16, recursive)
-            elif key2exp[String.type_ethernet_ii] == String.ipv6:
-                IPv6.parse_ipv6(key2val[String.data_payload], 16, recursive)
+            # elif key2exp[String.type_ethernet_ii] == String.ipv6:
+            #     IPv6.parse_ipv6(key2val[String.data_payload], 16, recursive)
             else:
                 assert False, "Network Protocol Not Supported"
         else:
