@@ -1593,6 +1593,6 @@ class Ui_MainWindow(object):
         self.btn_theme.setText(QCoreApplication.translate("MainWindow", u"\u4e3b\u9898", None))
         self.btn_export.setText(QCoreApplication.translate("MainWindow", u"\u5bfc\u51fa", None))
         self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"\u8f6f\u4ef6\u5de5\u7a0b2003\u73ed \u675c\u777f", None))
-        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.0", None))
+        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.2", None))
     # retranslateUi
 

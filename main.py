@@ -118,8 +118,15 @@ class MainWindow(QMainWindow):
         # ///////////////////////////////////////////////////////////////
         useCustomTheme = True
 
+        # TODO 路径冻结
+        if getattr(sys, "frozen", False):
+            absPath = os.path.dirname(os.path.abspath(sys.executable))
+        elif __file__:
+            absPath = os.path.dirname(os.path.abspath(__file__))
+
         # 便于一键切换主题
         self.useCustomTheme = useCustomTheme
+        self.absPath = absPath
 
         themeFile = "themes/py_dracula_light.qss"
 
@@ -222,12 +229,12 @@ class MainWindow(QMainWindow):
 
         if btnName == "btn_theme":
             if self.useCustomTheme:
-                themeFile = "themes/py_dracula_dark.qss"
+                themeFile = os.path.join(self.absPath, "themes/py_dracula_dark.qss")
                 UIFunctions.theme(self, themeFile, True)
                 AppFunctions.setThemeHack(self)
                 self.useCustomTheme = False
             else:
-                themeFile = "themes/py_dracula_light.qss"
+                themeFile = os.path.join(self.absPath, "themes/py_dracula_light.qss")
                 UIFunctions.theme(self, themeFile, True)
                 AppFunctions.setThemeHack(self)
                 self.useCustomTheme = True
