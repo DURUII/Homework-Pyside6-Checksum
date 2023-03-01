@@ -37,3 +37,8 @@
 	- [15分钟快速入门PySide/PyQt](https://www.bilibili.com/video/BV18F411W7y2)
 	- [Python+Pyside/PyQt实现的GUI桌面应用](https://www.bilibili.com/video/BV1i24y1X7pV)
 	- [实现选择文件界面](https://blog.csdn.net/weixin_42888638/article/details/127186631)
+
+
+3. Diagram
+	- [Python自动绘制UML类图、函数调用图](https://blog.csdn.net/Bit_Coders/article/details/120722430)
+	- [error: subprocess-exited-with-error](https://zhuanlan.zhihu.com/p/581112365)
