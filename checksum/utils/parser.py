@@ -41,12 +41,13 @@ def parse(key2bit: dict[str, int], stream: str, base: int):
         assert starter + len_bit <= len(stream), f"stream is inadequate for parsing"
 
         if len_bit > 0:
-            key2val[key] = hex(int(stream[starter:starter + len_bit], 2))
+            key2val[key] = hex(int(stream[starter:starter + len_bit], 2))[2:].zfill(len_bit // 4)
 
         elif len_bit == -1:
             # 主要针对无数据部分的数据包
             if stream[starter:] != "":
-                key2val[key] = hex(int(stream[starter:], 2))
+                len_bit = len(stream) - starter
+                key2val[key] = hex(int(stream[starter:], 2))[2:].zfill(len_bit // 4)
             else:
                 key2val[key] = None
 
