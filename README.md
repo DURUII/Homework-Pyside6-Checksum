@@ -48,4 +48,4 @@
 
 
 # 实现
-🚩闲下来更新README
+[🚩README](https://github.com/DURUII/Homework-Pyside6-Checksum/blob/master/DURUII/readme.pdf)
