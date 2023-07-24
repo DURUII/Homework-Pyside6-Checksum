@@ -32,13 +32,11 @@ def parse(key2bit: dict[str, int], stream: str, base: int):
     # 用于置零校验位
     reset = 0
 
-    for key in key2bit.keys():
-        len_bit = key2bit[key]
-
+    for key, len_bit in key2bit.items():
         if key == String.checksum:
             reset = starter
 
-        assert starter + len_bit <= len(stream), f"stream is inadequate for parsing"
+        assert starter + len_bit <= len(stream), "stream is inadequate for parsing"
 
         if len_bit > 0:
             key2val[key] = hex(int(stream[starter:starter + len_bit], 2))[2:].zfill(len_bit // 4)
@@ -57,10 +55,11 @@ def parse(key2bit: dict[str, int], stream: str, base: int):
         starter += len_bit
 
     stream_bin_reset = str(stream)
-    if String.checksum in key2bit.keys():
-        stream_bin_reset = stream[:reset] \
-                           + str("".join(['0' for _ in range(key2bit[String.checksum])])) \
-                           + stream[reset + key2bit[String.checksum]:]
+    if String.checksum in key2bit:
+        stream_bin_reset = (
+            stream[:reset]
+            + "".join(['0' for _ in range(key2bit[String.checksum])])
+        ) + stream[reset + key2bit[String.checksum] :]
 
     # 十六进制存储
     return key2val, stream_bin_reset

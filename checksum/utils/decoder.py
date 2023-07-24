@@ -6,7 +6,7 @@ def decode(key2bit: dict[str, int], key2val: dict[str, str], key2dec: dict):
 
     key2exp = key2val.copy()
 
-    for key in key2dec.keys():
+    for key in key2dec:
         key2exp[key] = key2dec[key](key2exp[key])
 
     return key2exp
@@ -21,11 +21,14 @@ def type_ethernet(stream_hex):
         '0x86DD': String.ipv6,
     }
 
-    for key in hex2type.keys():
-        if int(stream_hex, 16) == int(key, 16):
-            return hex2type[key]
-
-    return None
+    return next(
+        (
+            value
+            for key, value in hex2type.items()
+            if int(stream_hex, 16) == int(key, 16)
+        ),
+        None,
+    )
 
 
 def type_protocol(stream_hex):
@@ -34,8 +37,11 @@ def type_protocol(stream_hex):
         '17': String.udp,
     }
 
-    for key in int2type.keys():
-        if int(stream_hex, 16) == int(key, 10):
-            return int2type[key]
-
-    return None
+    return next(
+        (
+            value
+            for key, value in int2type.items()
+            if int(stream_hex, 16) == int(key, 10)
+        ),
+        None,
+    )

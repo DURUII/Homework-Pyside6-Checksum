@@ -7,14 +7,14 @@ def bin2hex(stream_bin):
 
 def print_hex(stream: str, num_sep=2, num_ln=32):
     html = "<br>"
-    console.print(f"[bold blue]sum to be checked: [/bold blue]")
+    console.print("[bold blue]sum to be checked: [/bold blue]")
     for i in range(len(stream)):
         if i % num_sep == 0 and i != 0:
             console.print(" ", end="")
-            html = html + " "
+            html = f"{html} "
         if i % num_ln == 0 and i != 0:
             console.print("\n", end="")
-            html = html + "<br>"
+            html = f"{html}<br>"
         console.print(f"[bold blue]{stream[i]}[/bold blue]", end="")
         html += stream[i]
     console.print("\n", end="")
@@ -22,7 +22,7 @@ def print_hex(stream: str, num_sep=2, num_ln=32):
 
 
 def nip_prefix(stream: str, base=16):
-    assert base == 16 or base == 8 or base == 2, "only BIN, OCT, HEX allowed"
+    assert base in [16, 8, 2], "only BIN, OCT, HEX allowed"
 
     stream = stream.lower().replace('\n', '').replace(' ', '')
 
