@@ -1,26 +1,22 @@
 def dict2html(key2exp):
+    if key2exp is None:
+        return ""
     html = []
 
-    if key2exp is not None:
-        for key in key2exp.keys():
-            content = key2exp[key]
+    for key in key2exp.keys():
+        content = key2exp[key]
 
-            if type(content) == list:
-                _tmp = []
-                for item in content:
-                    _tmp.append(f"""<div>{item}</div>""")
-                content = ''.join(_tmp)
+        if type(content) == list:
+            _tmp = [f"""<div>{item}</div>""" for item in content]
+            content = ''.join(_tmp)
 
-            html.append(f"""<div>
+        html.append(f"""<div>
                 <span style="color: blue; font-weight: bold;">{key}:</span>
                 <span>{content}</span>
             </div>""")
 
-        html.append("<br><br>")
-        return "".join(html)
-
-    else:
-        return ""
+    html.append("<br><br>")
+    return "".join(html)
 
 
 def parse_html(e):

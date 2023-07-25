@@ -53,7 +53,9 @@ def check(stream_hex: str, stream_checksum: str, base=16, pseudo=True):
         f"{hex(_sum)} + {hex(int(stream_checksum, 16))} = {hex(_sum + int(stream_checksum, 16))}")
 
     valid = int(complement(hex(_sum)), 16) == int(stream_checksum, 16)
-    console.print("[purple bold]checksum_valid?: [/purple bold]" + f"[bold red]{str(valid)}[/bold red]")
+    console.print(
+        f"[purple bold]checksum_valid?: [/purple bold][bold red]{valid}[/bold red]"
+    )
 
     process[Data.result] = valid
     return process

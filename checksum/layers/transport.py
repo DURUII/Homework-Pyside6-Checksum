@@ -56,11 +56,11 @@ class TCP:
 
         # 注意长度单位：字节
         stream_bin_reset = args.get("pseudo") \
-                           + nip_prefix(bin(len(stream_bin_reset) // 8), 2).zfill(2 * 8) \
-                           + nip_prefix(stream_bin_reset, 2)
+                               + nip_prefix(bin(len(stream_bin_reset) // 8), 2).zfill(2 * 8) \
+                               + nip_prefix(stream_bin_reset, 2)
 
         if len(data) % 16 != 0:
-            stream_bin_reset = stream_bin_reset + "00000000"
+            stream_bin_reset = f"{stream_bin_reset}00000000"
 
         cls.checksum(stream_bin_reset, key2val[String.checksum])
 
@@ -110,11 +110,11 @@ class UDP:
 
         # TODO 和 UDP 不同，此时长度非自行计算，单位已经为字节
         stream_bin_reset = args.get("pseudo") \
-                           + nip_prefix(bin(int(key2val[String.length_total_packet], 16)), 2).zfill(2 * 8) \
-                           + nip_prefix(stream_bin_reset, 2)
+                               + nip_prefix(bin(int(key2val[String.length_total_packet], 16)), 2).zfill(2 * 8) \
+                               + nip_prefix(stream_bin_reset, 2)
 
         if len(data) % 16 != 0:
-            stream_bin_reset = stream_bin_reset + "00000000"
+            stream_bin_reset = f"{stream_bin_reset}00000000"
 
         cls.checksum(stream_bin_reset, key2val[String.checksum])
 
